@@ -1,0 +1,59 @@
+<fieldset>
+	<legend>Lokální operace</legend>
+
+	<fieldset class="wide">
+		<legend>Zápis proměnné</legend>
+		<form method="POST" action="/promenna-local-write" class="ajaxForm">
+			Název: <input type="text" name="name" value="" />
+			Hodnota: <input type="text" name="value" value="" />
+			<input type="submit" value="Zapsat" />
+		</form>
+	</fieldset>
+
+	<fieldset class="wide">
+		<legend>Čtení proměnné</legend>
+		<form method="POST" action="/promenna-local-read" class="ajaxForm">
+			Název: <input type="text" name="name" value="" />
+			<input type="submit" value="Přečíst" />
+		</form>
+	</fieldset>
+
+</fieldset>
+
+<br />
+
+<fieldset>
+	<legend>Globální operace</legend>
+
+	<fieldset class="wide">
+		<legend>Zápis proměnné</legend>
+		<form method="POST" action="/promenna-write" class="ajaxForm">
+			Název: <input type="text" name="name" value="" />
+			Hodnota: <input type="text" name="value" value="" />
+			<input type="submit" value="Zapsat" />
+		</form>
+	</fieldset>
+
+	<fieldset class="wide">
+		<legend>Čtení proměnné</legend>
+		<form method="POST" action="/promenna-read" class="ajaxForm">
+			Název: <input type="text" name="name" value="" />
+			<input type="submit" value="Přečíst" />
+		</form>
+	</fieldset>
+</fieldset>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.ajaxForm').ajaxForm({
+		success: function( data ) {
+
+			alert ( data );
+		}
+	});
+
+});
+
+</script>

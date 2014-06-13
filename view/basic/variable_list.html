@@ -1,0 +1,28 @@
+<h2>Seznam lokálních proměnných:</h2>
+
+<table class="niceTable">
+	<tr>
+		<th>Název</th>
+		<th>Hodnota</th>
+		<th>Umístění</th>
+		<th></th>
+	</tr>
+	<% for ( i in JSON.parse(JSON.stringify(data)) ) { %>
+	<tr>
+		<td class="bold">
+			<%= i %>
+		</td>
+		<td>
+			<%= data[i].value %>
+		</td>
+		<td>
+			<%= (( data[i].local ) ? "lokální" : data[i].ADDR+":"+data[i].PORT) %>
+		</td>
+		<td>
+			<% if ( ! data[i].local ) { %>
+				<a href="/promenna-dotaz">dotázat se na proměnnou</a>
+			<% } %>
+		</td>
+	</tr>
+	<% } %>
+</table>

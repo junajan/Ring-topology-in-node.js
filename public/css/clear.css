@@ -1,0 +1,21 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+.fleft {
+    
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}

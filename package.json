@@ -1,0 +1,39 @@
+{
+  "name": "MyApp",
+  "version": "0.0.1",
+  "description": "App description",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js 3333"
+  },
+  "dependencies": {
+    "nodemon": "latest",
+    "supervisor": "latest",
+    "socket.io": "latest",
+    "underscore": "latest",
+    "express": "latest",
+    "ejs": "latest",
+    "ejs-locals": "~1.0.2",
+    "express-ejs-layouts": "~0.3.1",
+    "async": "latest",
+    "connect-session-file": "latest",
+    "diacritics": "latest",
+    "colors": "latest",
+    "ip": "latest",
+    "request-json": "latest",
+    "socket.io-client": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  },
+  "author": {
+    "name": "Author name",
+    "email": "Author email"
+  },
+  "keywords": [
+    ""
+  ],
+  "bugs": {
+    "web": "null"
+  }
+}

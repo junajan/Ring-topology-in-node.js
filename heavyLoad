@@ -1,0 +1,23 @@
+#!/bin/bash
+
+start=3333;
+count=10;
+
+i=$start;
+end=`expr $start + 10`;
+
+while [ $i -lt $end ]; do 
+
+	if [ "$i" == "$start" ]; then
+		echo "Starting first node on port $i";
+
+		node app.js $i > /dev/null 2>&1 &
+	else
+   		echo "Starting node on port $i";
+		
+   		node app.js $i 127.0.0.1 `expr $i - 1` > /dev/null 2>&1 & 
+	fi
+
+	(( i++ ))
+	sleep 2
+done

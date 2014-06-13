@@ -1,0 +1,44 @@
+ChatRooms:
+    chat kategorie:
+        jmeno
+        jmenoSEO
+        id
+        poradi
+        obrazek
+        
+    chat obsahuje:
+        id
+        typ
+        hash
+        jmeno
+        jmenoSEO
+        popis
+        kategorii
+        poradi
+
+    modul obstaravajici mistnosti
+    na zacatku z databaze nacte kategorie a chaty
+    na pozadani vrati kategorie s chaty
+    umoznuje pridat, upravit, smazat kategorii
+    umoznuje pridat, upravit, smazat chat
+    typy chatu:
+        verejny chat - 1
+            - nema prirazene uzivatele
+            - kazdy muze prijit a chatovat
+            - neprihlaseni uzivatele mohou jen zobrazit chat
+        
+        soukromy chat - 2
+            - pristup jen pro vybrane osoby
+                -> seznam osob s opravnenim pro chat
+            - neprihlaseni uzivatele nemohou ani cist
+                -> zobrazi se nejake varovani
+            
+        PM chat - 3
+            - chat jen mezi zvolenymi uzivateli
+                -> seznam s povolenymi uzivateli
+        
+    umoznuje vypsat seznam uzivatelu v chatu
+    pridat uzivatele do chatu
+    vypsat seznam PM chatu pro uzivatele
+
+    

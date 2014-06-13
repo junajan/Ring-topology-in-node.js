@@ -1,0 +1,82 @@
+<h2>Readme</h2>
+<pre>
+Realizace sdileneho pristupu k promenne do predmetu MI-DSV
+# ===========================
+# == [Instalace prostredi] ==
+# ===========================
+
+# Instalace node.js a npm 
+
+apt-get install python g++ curl libssl-dev
+mkdir /tmp/nodejs && cd /tmp/nodejs
+wget http://nodejs.org/dist/node-latest.tar.gz
+tar xzvf node-latest.tar.gz && cd node-v*
+./configure
+make
+make test
+make install
+
+# Instalace balicku z NPM repozitare
+# v adresari s projektem
+npm install
+
+# ======================
+# == [Popis aplikace] ==
+# ======================
+Aplikace tvori jeden uzel. Pomoci parametru mu lze predat adresu dalsiho uzlu, na ktery
+se sam napoji a vytvori s nim kruhovou topologii. To lze udelat pro vice uzlu, ktere se
+postupne napojuji mezi ostatni a vytvareji tak vetsi kruh.
+
+V kruhu funguje voleni leadera pomoci Chang-Robertsova algoritmu.
+
+Posledni funkcnim blokem je prace s promennou, uzel muze zapisovat (jednoduchou) promennou
+k sobe do lokalni pameti a nebo na leadera, ktery je zvolen automaticky.
+
+Pri cteni promenne se uzel nejprve podiva k sobe do lokalniho uloziste a az pote se dotazuje
+leadera.
+
+Pri spusteni uzlu se spusti take webova aplikace na stejnem protu, pres kterou lze uzel pohodlne
+ovladat
+
+# ========================
+# == [Pouziti aplikace] == 
+# ========================
+
+Jeden uzel se spousti pomoci prikazu "node" napriklad:
+
+# spusti uzel na portu 3333, ktery ceka na spojeni
+node app.js 3333
+
+# spusti uzel na portu 4444, ktery se pokusi pripojit k dalsimu uzlu na localhostu a portu 3333
+node app.js 4444 127.0.0.1 3333
+
+# uzlu lze nastavit take IP adresu tak, aby se tvaril, ze ji ma
+# (pri vice interfacech si automaticky vybira tu prvni, takze ostatnim uzlum posle spatnou adresu,
+# spravnou lze tedy nastavit manualne)
+node app.js 192.168.56.1 4444 127.0.0.1 3333
+
+
+# ====================
+# pro rychle otestovani na localhostu lze pouzit take prikaz heavyLoad
+# ktery spusti vice uzlu najednou a nastavi jim vzajemne adresy 
+./heavyLoad
+
+# a pote zastaveni
+./stopHeavyLoad
+
+# =======================
+# ======= [Zaver] =======
+# =======================
+
+Aplikace tvori kruhovou topologii pomoci Socket.IO spojeni, na kterem
+posila JSON objekty pro realizaci vymeny zprav. Neni zde ochrana pred
+nekterymi krizovymi situacemi nebo zalohovani dat pro moznost, ze by
+z topologie vypadl leader.
+
+Aplikace funguje v zakladnich podminkach, pro jeji ostre nasazeni by
+vsak potrebovala jeste doladit a "ucesat".
+
+
+
+
+</pre>

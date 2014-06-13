@@ -1,0 +1,102 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+*:focus {
+    outline: 0;
+}
+
+html, body {
+    
+    height: 100%;
+    font-family: RobotoRegular, Arial;
+    width: 100%;
+    position: relative;
+}
+
+#all {
+    
+    position:relative;
+    min-height:100%;
+    min-width: 960px;
+    margin: 30px;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+
+.niceTable tr td{
+    
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.niceTable tr:nth-child(even) {
+    background-color: #F6F9FC;
+}
+
+.niceTable tr:nth-child(odd) {
+    background-color: #E5F1F4;
+}
+
+.niceTable th{
+    
+    margin: 5px;
+    padding: 5px;
+}
+
+.niceTable tr:hover {
+    
+    background-color: #FBF8ED;
+}
+
+.question {
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+fieldset {
+    
+    margin-bottom: 20px;
+    padding: 20px;
+    display: inline-block;
+}
+
+fieldset legend {
+
+    font-weight: bold;
+}
+
+.list_item {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+fieldset fieldset {
+
+    display: block;
+}

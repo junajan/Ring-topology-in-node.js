@@ -1,0 +1,163 @@
+<h2>Informace o uzlu:</h2>
+
+<table class="niceTable">
+	<tr class="bold">
+		<td>
+			Moje adresa:
+		</td>
+		<td>
+	 		<%= config.LOCAL_ADDRESS %>:<%= config.LOCAL_PORT %>
+		</td>
+	</tr>
+	<tr class="bold">
+		<td>
+			Moje UID:
+		</td>
+		<td>
+	 		<%= UID %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Defaultní uzel pro připojení: <img src="/img/question.png" class="question" title="Adresa a port nastavený pro první připojení" />
+		</td>
+		<td>
+ 			<%= defaultConfig.NODE2_ADDRESS %>:<%= defaultConfig.NODE2_PORT %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Aktuální uzel pro připojení:
+			<img src="/img/question.png" class="question" title="Adresa a port známého uzlu po posledním připojení" />
+		</td>
+		<td>
+			<%= config.NODE2_ADDRESS %>:<%= config.NODE2_PORT %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Levý uzel:
+			<img src="/img/question.png" class="question" title="Adresa:Port (socket.io ID) uzlu, ke kterému je aktuální uzel připojen" />
+		</td>
+		<td>
+			<% if ( LEFT_NODE ) { %>
+				<%= LEFT_NODE.socket.options.host %>:<%= LEFT_NODE.socket.options.port %>
+				(<%= LEFT_NODE.id %>)
+
+			<% } %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Pravý uzel:
+			<img src="/img/question.png" class="question" title="Adresa:Port (socket.io ID) uzlu, který se připojil k aktuálnímu uzlu ZPRAVA" />
+		</td>
+		<td>
+			<% if ( RIGHT_NODE ) { %>
+				<%= RIGHT_NODE.host %>:<%= RIGHT_NODE.port %>
+				(<%= RIGHT_NODE.id %>)
+
+			<% } %>
+		</td>
+	</tr>
+</table>
+
+<br />
+<br />
+
+<br />
+
+<h2>Informace o topologii:</h2>
+
+<a href="/refresh" class="ajax" alt="Refreshuji informace o topologii">Oskenovat síť</a> - refresh informací o topologii
+<br />
+<br />
+<a href="/leader-election" class="ajax" alt="Spouštím výběr vůdce v topologii">Zvolit vůdce</a> - spustí leader election na síti
+<br />
+<br />
+
+<table class="niceTable">
+	<% if ( ! LEFT_NODE ) { %>
+		<tr>
+			<td colspan="100%">
+				Uzel nění připojen k topologii
+			</td>
+		</tr>
+	<% } else if ( TOPOLOGY ) { %> 
+	<tr class="bold">
+		<td>
+			Počet uzlů:
+		</td>
+		<td>
+ 			<%= TOPOLOGY.list.length %>
+		</td>
+	</tr>
+	<tr class="bold">
+		<td>
+			Leader:
+		</td>
+		<td>
+ 			<% if ( LEADER ) { %>
+				<%= LEADER.ADDR %>:<%= LEADER.PORT %> (<%= LEADER.UID %>)
+ 			<% } else { %>
+ 				není zvolen
+ 			<% } %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Typ topologie:
+		</td>
+		<td>
+			<% if ( TOPOLOGY.complete ) { %> 
+				kruh
+			<% } else { %>
+				had
+			<% } %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Ring ping:
+			<img src="/img/question.png" class="question" title="Čas na oběhnutí zprávy dokola" />
+		</td>
+		<td>
+			<%= TOPOLOGY.end - TOPOLOGY.start %>ms
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Seznam uzlů:
+			<img src="/img/question.png" class="question" title="Zobrazené časy jsou závislé na aktuálních časech nastavených na každém uzlu!!" />
+		</td>
+		<td>
+			<% 
+				for ( i in TOPOLOGY.list ) { %>
+				<div class="list_item">
+					<a href="http://<%= TOPOLOGY.list[i].IP %>:<%= TOPOLOGY.list[i].PORT %>">
+						<%= TOPOLOGY.list[i].IP %>:<%= TOPOLOGY.list[i].PORT %></a>
+					(<%= TOPOLOGY.list[i].DATE - TOPOLOGY.start %>ms)
+					<a href="http://<%= TOPOLOGY.list[i].IP %>:<%= TOPOLOGY.list[i].PORT %>/exit" alt="Vypínám uzel" class="ajax">
+						<img class="question" src="/img/close.png" title="Vypnout uzel" />
+					</a>
+				</div>
+			<% } %>
+		</td>
+	</tr>
+	
+	<% } else { %>
+		<tr>
+			<td colspan="100%">Chybí data o topologii. Oskenujte síť.</td>
+		</tr>
+	<% } %>
+	
+</table>
+
+
+
+<br />
+
+
+
+
+
